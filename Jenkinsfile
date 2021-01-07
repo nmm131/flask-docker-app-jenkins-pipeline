@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 //  Building new image
-				sh 'cat ~/my_password.txt | docker login --username nmm131 --password-stdin'
+				sh 'cat ~/my_password.txt | winpty docker login --username nmm131 --password-stdin bash'
                 sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
                 sh 'docker image tag $DOCKER_HUB_REPO:latest $DOCKER_HUB_REPO:$BUILD_NUMBER'
 
